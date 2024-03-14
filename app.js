@@ -126,19 +126,22 @@ const deleteCustomerData = (req, res) => {
 // localhost:8000
 app.get('/', defaultRouter)
 
-app.get('/api/v1/customers', getCustomerData)
+// app.get('/api/v1/customers', getCustomerData)
+
+//api utk get data by id
+// app.get('/api/v1/customers/:id', getCustomerById)
+
+// API untuk update data
+// app.patch('/api/v1/customers/:id', updateCustomerData)
+
+// API untuk create new data
+// app.post("/api/v1/customers", createCustomerData)
+
+// app.delete('/api/v1/customers/:id', deleteCustomerData)
+
+app.route('/api/v1/customers').get(getCustomerData).post(createCustomerData)
+app.route("/api/v1/customers/:id").get(getCustomerById).patch(updateCustomerData).delete(deleteCustomerData)
 
 app.listen(PORT, () => {
     console.log(`APP running on port: ${PORT}`)
 });
-
-//api utk get data by id
-app.get('/api/v1/customers/:id', getCustomerById)
-
-// API untuk update data
-app.patch('/api/v1/customers/:id', updateCustomerData)
-
-// API untuk create new data
-app.post("/api/v1/customers", createCustomerData)
-
-app.delete('/api/v1/customers/:id', deleteCustomerData)
